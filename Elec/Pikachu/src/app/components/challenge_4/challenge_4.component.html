@@ -1,0 +1,7 @@
+<img src="/assets/circuit_kirchoff.png">
+<form id="formChallenge3" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">I(+3V) = (round to .xx)</label><input type="result" id="result" formControlName="result"> mA
+    <input type="submit" value="Confirm">
+</form>
+
+<router-outlet></router-outlet>

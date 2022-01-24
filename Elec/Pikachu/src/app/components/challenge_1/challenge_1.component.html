@@ -1,0 +1,8 @@
+<img src="assets/logique V2.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">How will the LEDs light up ? (ON = 1, OFF = 0) </label><input type="result" id="result" formControlName="result">
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>

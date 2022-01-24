@@ -1,0 +1,7 @@
+<img src="/assets/circuits_puces.png">
+<form id="formChallenge3" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">How will the LEDs light up ? (ON = 1, OFF = 0) </label><input type="result" id="result" formControlName="result">
+    <input type="submit" value="Confirm">
+</form>
+
+<router-outlet></router-outlet>
