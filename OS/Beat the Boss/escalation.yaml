@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privileges-console
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: privileges-console
+  template:
+    metadata:
+      labels:
+        app: privileges-console
+    spec:
+      containers:
+      - name: privileges-console
+        image: swithan/ctf_challenges:test_xinetd
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9991
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: privilege-service
+  labels:
+    run: privileges-console
+spec:
+  ports:
+  - port: 9991
+    protocol: TCP
+  selector:
+    app: privileges-console
+  type: LoadBalancer

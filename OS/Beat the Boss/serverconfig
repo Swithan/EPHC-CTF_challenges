@@ -1,0 +1,14 @@
+service pythontestserver
+{
+	disable	= no
+	flags	= IPv4
+	type	= UNLISTED
+	port	= 9991
+	protocol	= tcp
+	socket_type	= stream
+	wait	= no
+	user	= 0
+	server	= /root/source.py
+	log_type	= SYSLOG daemon
+	log_on_failure	+= USERID
+}
