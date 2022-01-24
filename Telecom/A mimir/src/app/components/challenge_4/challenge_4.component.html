@@ -1,0 +1,6 @@
+<form id="formChallenge3" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">Calculate the CRC for the message "110101100010" with a polynomial generator x<sup>4</sup> + x³ + x + 1 </label><br><input type="result" id="result" formControlName="result">
+    <input type="submit" value="Confirm">
+</form>
+
+<router-outlet></router-outlet>

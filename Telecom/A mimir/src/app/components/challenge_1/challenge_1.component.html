@@ -1,0 +1,8 @@
+<img src="assets/HDB.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">What is the binary value of this HDB2 line coding ? </label><input type="result" id="result" formControlName="result">
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>
