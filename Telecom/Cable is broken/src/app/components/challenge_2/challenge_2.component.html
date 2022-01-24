@@ -1,0 +1,9 @@
+<h1>Huffman : Give the binary values of 'keep it simple stupid'</h1>
+<img src="assets/Huffman.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">Taux de compression = </label><input type="result" id="result" formControlName="result">%
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>
