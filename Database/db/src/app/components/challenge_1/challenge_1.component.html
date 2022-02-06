@@ -1,0 +1,9 @@
+<h1>Who ordered 15 "POINTEACIER60(1K)" ?</h1>
+<img src="assets/client.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">Name : </label><input type="result" id="result" formControlName="result">
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>

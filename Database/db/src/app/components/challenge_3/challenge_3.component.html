@@ -1,0 +1,10 @@
+<h1>How much money have been spent by habitants of Toulouse ?</h1>
+<img src="assets/client.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">Total expenses : </label>
+    <input type="result" id="result" formControlName="result"> €
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>

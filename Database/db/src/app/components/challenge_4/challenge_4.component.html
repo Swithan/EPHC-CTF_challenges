@@ -1,0 +1,16 @@
+<h1>
+    Give the INSERT command(s) for an order of 40 "PL. SAPIN 200x20x2" from client JACOB made in february of this year.
+</h1>
+<p>Command number has to be next serial value</p>
+<p>Insert values format : ('x', 'y')</p>
+<p>Detail quantity is an integer</p>
+<p>Column names aren't necessary in command</p>
+<img src="assets/client.png">
+<form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label for="result">INSERT COMMANDE : </label><input type="result" id="commande" formControlName="commande"><br>
+    <label for="result">INSERT DETAIL : </label><input type="result" id="detail" formControlName="detail">
+    <input type="submit" value="Confirm">
+</form>
+<p id="error"></p>
+
+<router-outlet></router-outlet>

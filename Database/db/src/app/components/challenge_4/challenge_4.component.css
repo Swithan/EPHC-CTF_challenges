@@ -1,0 +1,18 @@
+img {
+    height: 50%;
+    width: 100%;
+    max-width: 800px;
+}
+
+#error {
+    color: red;
+}
+
+#submit {
+    margin-left: 2%;
+}
+
+#commande,
+#detail {
+    width: 50%;
+}
