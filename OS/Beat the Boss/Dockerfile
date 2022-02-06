@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update -y
-RUN apt-get install -y python3 xinetd
+RUN apt-get install -y python3 xinetd netcat nano
 USER root
 WORKDIR /root
 COPY ./source.py ./source.py

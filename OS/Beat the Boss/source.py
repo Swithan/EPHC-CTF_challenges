@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 import sys
 
+sys.stdout.flush()
 user = 'user'
 askPassword = False
 
 while True:
     data= sys.stdin.readline().strip()
+    sys.stdout.flush()
     if data == 'help':
         print('''
 This is not a real bash. Here is a list of the commands you are allowed to do.
@@ -26,8 +28,8 @@ quit -- Leave challenge
     elif 'ls' == data:
         print('flag.txt creditentials.txt')
     elif 'ls -l' == data:
-        print('-r--r---- 1 admin admin flag.txt')
-        print('--------- 1 admin admin creditentials.txt')
+        print('r--r----- 1 admin admin flag.txt')
+        print('rwxrw-r-- 1 admin admin creditentials.txt')
     elif 'cat flag.txt' == data:
         if user == 'admin':
             print('EPHC{Y0u_R3_pr1VilEdg3D}')
@@ -39,8 +41,8 @@ quit -- Leave challenge
         askPassword = True
         print('Password :')
     elif 'quit' in data:
-        sys.stdout.flush()
         break
     else:
         if '' != data:
             print('{} : Permission denied'.format(data))
+            sys.stdout.flush()
