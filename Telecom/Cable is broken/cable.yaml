@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cable-broken
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cable-broken
+  template:
+    metadata:
+      labels:
+        app: cable-broken
+    spec:
+      containers:
+      - name: cable-broken
+        image: swithan/ctf_challenges:cable_broken
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8800
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cable-broken
+  labels:
+    run: cable-broken
+spec:
+  ports:
+  - port: 8800
+    protocol: TCP
+  selector:
+    app: cable-broken
+  type: LoadBalancer

@@ -11,7 +11,7 @@ export class AppComponent {
   public constructor(public router: Router) {
     this.router.events.subscribe();
   }
-  title = 'High Voltage';
+  title = 'Our cable is broken';
 
 
 }

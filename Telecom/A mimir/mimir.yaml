@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a-mimir
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: a-mimir
+  template:
+    metadata:
+      labels:
+        app: a-mimir
+    spec:
+      containers:
+      - name: a-mimir
+        image: swithan/ctf_challenges:a_mimir
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: a-mimir
+  labels:
+    run: a-mimir
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+  selector:
+    app: a-mimir
+  type: LoadBalancer
