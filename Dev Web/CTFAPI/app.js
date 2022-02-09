@@ -125,7 +125,7 @@ app.get('/Ctf/realflag', (req, res) => {
 });
 
 app.get('/Ctf/galflaer', (req, res) => {
-    res.send('flag: EPHC{d3Tan1MReT3d_3r_U0y}');
+    res.send('flag: EPHC{Pu_eV1G_rEv3N}');
 });
 
 app.get('/Ctf/RR', (req, res) => {
