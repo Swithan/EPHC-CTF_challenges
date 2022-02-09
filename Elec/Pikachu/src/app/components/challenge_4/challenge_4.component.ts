@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Challenge4Component implements OnInit {
 
   public form;
-  x = 'MTEuMzYgbUE=';
+  x = 'MTEuMzY=';
 
   constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
