@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bttf
+  name: bttf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bttf
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: bttf
+    spec:
+      containers:
+      - image: swithan/ctf_challenges:bttf
+        name: bttf
+        imagePullPolicy: Always
+        resources: 
+          limits:
+            memory: "128Mi"
+            cpu: "50m"
+        ports:
+          - containerPort: 80 
+      imagePullSecrets:
+      - name: regcred
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bttf
+  labels:
+    run: bttf
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: bttf
+  type: LoadBalancer
