@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mr-puel
+  name: mr-puel
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mr-puel
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: mr-puel
+    spec:
+      containers:
+      - image: swithan/ctf_challenges:mr_puel
+        name: mr-puel
+        imagePullPolicy: Always
+        resources: 
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8008
+      imagePullSecrets:
+      - name: regcred
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mr-puel
+  labels:
+    run: mr-puel
+spec:
+  ports:
+  - port: 8008
+    protocol: TCP
+  selector:
+    app: mr-puel
+  type: LoadBalancer
