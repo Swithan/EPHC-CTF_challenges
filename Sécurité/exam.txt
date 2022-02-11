@@ -1,0 +1,29 @@
+Epreuve Secu Réseau : Diffie-Hellman key exchange
+
+You decided to intercept a conversation between Mrs Van Den Schriek and Mr Noël, hoping you will catch a few exam questions.
+Unfortunately, their exchange had been ciphered but you dont have any information about the protocol.
+While reading some frames on WireShark, you notice the following one, that hold your attention :
+
+	- TLSv1.2 Record Layer: Handshake Protocol: Server Key Exchange
+		Content Type: Handshake
+		Version: TLS 1.2 (0x0303)
+		- Handshake Protocol: Server Key Exchange
+			Handshake Type: Server Key Exchange
+			- Diffie-Hellman Server Params
+				Implementation: original-content (multipicative group of integers)
+				p Length: 3
+				p: 131
+				g Length: 1
+				g: 7
+				Signature Hash Algorithm: *x****
+				Signature Length: ******
+				Signature: *********************************************
+				
+You also know that Mr Noël change his Private Key at each exhange, while Mrs Van Den Schriek keeps always the same Private Key.
+By mistake, this key got leaked, and you eared that she always uses the key "17".
+
+You succeeded to catch a message sent from Mr Noël to Mrs Van Den Schriek : 
+47 63 2 6 16 31 44 17 59 41 123 123 41 3 17 50 68 67 67 48 74 31 17 99 40 17 68 116 99 48 101
+
+Will you be able to break the ciphering protocol ?
+
