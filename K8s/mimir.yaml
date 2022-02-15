@@ -1,46 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: no-time
-  name: no-time
+  name: a-mimir
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: no-time
-  strategy: {}
+      app: a-mimir
   template:
     metadata:
       labels:
-        app: no-time
+        app: a-mimir
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
-        imagePullPolicy: Always
-        resources: 
+      - name: a-mimir
+        image: swithan/ctf_challenges:a_mimir
+        resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+        - containerPort: 8000
       imagePullSecrets:
       - name: regcred
-status: {}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: a-mimir
   labels:
-    run: no-time
+    run: a-mimir
 spec:
   ports:
-  - port: 3080
+  - port: 8000
     protocol: TCP
   selector:
-    app: no-time
+    app: a-mimir
   type: LoadBalancer

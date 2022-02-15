@@ -2,29 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ctf-api
-  name: ctf-api
+    app: no-time
+  name: no-time
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ctf-api
+      app: no-time
   strategy: {}
   template:
     metadata:
       labels:
-        app: ctf-api
+        app: no-time
     spec:
       containers:
-      - image: swithan/ctf_challenges:ctf_api
-        name: webapp
+      - image: swithan/ctf_challenges:no_time_full
+        name: no-time
         imagePullPolicy: Always
         resources: 
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3000 
+          - containerPort: 3080 
       imagePullSecrets:
       - name: regcred
 status: {}
@@ -34,13 +34,13 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: ctf-api
+  name: no-time
   labels:
-    run: ctf-api
+    run: no-time
 spec:
   ports:
-  - port: 3000
+  - port: 3080
     protocol: TCP
   selector:
-    app: ctf-api
+    app: no-time
   type: LoadBalancer

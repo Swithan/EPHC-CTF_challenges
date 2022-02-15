@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: challenge-db
+        image: swithan/ctf_challenges:db_murphy
+        ports:
+          - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels: 
+    app: postgres
+spec:
+  type: NodePort
+  selector:
+    app: postgres
+  ports:
+  - port: 5432
+  

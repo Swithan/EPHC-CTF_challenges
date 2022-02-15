@@ -1,46 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: no-time
-  name: no-time
+  name: beat-the-boss
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: no-time
-  strategy: {}
+      app: beat-the-boss
   template:
     metadata:
       labels:
-        app: no-time
+        app: beat-the-boss
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
-        imagePullPolicy: Always
-        resources: 
+      - name: beat-the-boss
+        image: swithan/ctf_challenges:os_privileges
+        resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+        - containerPort: 9991
       imagePullSecrets:
       - name: regcred
-status: {}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: beat-the-boss-service
   labels:
-    run: no-time
+    run: beat-the-boss
 spec:
   ports:
-  - port: 3080
+  - port: 9991
     protocol: TCP
   selector:
-    app: no-time
+    app: beat-the-boss
   type: LoadBalancer

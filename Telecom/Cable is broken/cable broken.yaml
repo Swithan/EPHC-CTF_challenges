@@ -1,46 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: no-time
-  name: no-time
+  name: cable-broken
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: no-time
-  strategy: {}
+      app: cable-broken
   template:
     metadata:
       labels:
-        app: no-time
+        app: cable-broken
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
-        imagePullPolicy: Always
-        resources: 
+      - name: cable-broken
+        image: swithan/ctf_challenges:cable_broken
+        resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+        - containerPort: 8800
       imagePullSecrets:
       - name: regcred
-status: {}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: cable-broken
   labels:
-    run: no-time
+    run: cable-broken
 spec:
   ports:
-  - port: 3080
+  - port: 8800
     protocol: TCP
   selector:
-    app: no-time
+    app: cable-broken
   type: LoadBalancer
