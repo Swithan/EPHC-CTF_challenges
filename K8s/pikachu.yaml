@@ -2,29 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: no-time
-  name: no-time
+    app: pikachu
+  name: pikachu
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: no-time
+      app: pikachu
   strategy: {}
   template:
     metadata:
       labels:
-        app: no-time
+        app: pikachu
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
+      - image: swithan/ctf_challenges:pikachu
+        name: pikachu
         imagePullPolicy: Always
         resources: 
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+          - containerPort: 80
       imagePullSecrets:
       - name: regcred
 status: {}
@@ -34,13 +34,13 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: pikachu
   labels:
-    run: no-time
+    run: pikachu
 spec:
   ports:
-  - port: 3080
+  - port: 8080
     protocol: TCP
   selector:
-    app: no-time
+    app: pikachu
   type: LoadBalancer

@@ -2,29 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: no-time
-  name: no-time
+    app: mr-puel
+  name: mr-puel
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: no-time
+      app: mr-puel
   strategy: {}
   template:
     metadata:
       labels:
-        app: no-time
+        app: mr-puel
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
+      - image: swithan/ctf_challenges:mr_puel
+        name: mr-puel
         imagePullPolicy: Always
         resources: 
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+          - containerPort: 8008
       imagePullSecrets:
       - name: regcred
 status: {}
@@ -34,13 +34,13 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: mr-puel
   labels:
-    run: no-time
+    run: mr-puel
 spec:
   ports:
-  - port: 3080
+  - port: 8008
     protocol: TCP
   selector:
-    app: no-time
+    app: mr-puel
   type: LoadBalancer

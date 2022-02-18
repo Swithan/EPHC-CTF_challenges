@@ -1,46 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: no-time
-  name: no-time
+  name: data-best
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: no-time
-  strategy: {}
+      app: data-best
   template:
     metadata:
       labels:
-        app: no-time
+        app: data-best
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
-        name: no-time
+      - name: data-best
+        image: swithan/ctf_challenges:data_best
         imagePullPolicy: Always
-        resources: 
+        resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-          - containerPort: 3080 
+        - containerPort: 8888
       imagePullSecrets:
       - name: regcred
-status: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: no-time
+  name: data-best
   labels:
-    run: no-time
+    run: data-best
 spec:
   ports:
-  - port: 3080
+  - port: 8888
     protocol: TCP
   selector:
-    app: no-time
+    app: data-best
   type: LoadBalancer
