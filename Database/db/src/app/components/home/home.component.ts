@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
   
   status = 1;
-  title = 'High Voltage';
+  title = 'Data best';
 
   next(a: any) {
     this.router.navigateByUrl(`/challenge_${a}`, {state: {step: this.step}});
