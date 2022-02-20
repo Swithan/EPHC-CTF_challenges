@@ -1,36 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: flute
   name: flute
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: flute
-  strategy: {}
   template:
     metadata:
       labels:
         app: flute
     spec:
       containers:
-      - image: swithan/ctf_challenges:flutest
+      - image: swithan/ctf_challenges:flute_alors
         name: flute
         imagePullPolicy: Always
         resources: 
+          requests: 
+            memory: "16Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "32Mi"
+            cpu: "0.1"
         ports:
-          - containerPort: 4040 
+        - containerPort: 80 
       imagePullSecrets:
       - name: regcred
-status: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -39,7 +36,7 @@ metadata:
     run: flute
 spec:
   ports:
-  - port: 4040
+  - port: 80
     protocol: TCP
   selector:
     app: flute

@@ -5,7 +5,7 @@ metadata:
     app: ctf-api
   name: ctf-api
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: ctf-api
@@ -20,9 +20,12 @@ spec:
         name: ctf-api
         imagePullPolicy: Always
         resources: 
+          requests:
+            memory: "32Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "0.03"
         ports:
           - containerPort: 3000 
       imagePullSecrets:

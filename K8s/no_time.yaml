@@ -1,36 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: no-time
   name: no-time
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: no-time
-  strategy: {}
   template:
     metadata:
       labels:
         app: no-time
     spec:
       containers:
-      - image: swithan/ctf_challenges:no_time_full
+      - image: swithan/ctf_challenges:no_time
         name: no-time
         imagePullPolicy: Always
-        resources: 
+        resources:
+          requests:
+            memory: "16Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "32Mi"
+            cpu: "0.03"
         ports:
-          - containerPort: 3080 
+        - containerPort: 3080 
+          protocol: TCP
       imagePullSecrets:
       - name: regcred
-status: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:

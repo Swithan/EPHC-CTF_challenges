@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: multi-web
   name: multi-web
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: multi-web
-  strategy: {}
   template:
     metadata:
       labels:
         app: multi-web
     spec:
       containers:
-      - image: swithan/ctf_challenges:multi-web
+      - image: swithan/ctf_challenges:multi_web
         name: multi-web
         imagePullPolicy: Always
-        resources: 
+        resources:
+          requests:
+            memory: "16Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "32Mi"
+            cpu: "0.03"
         ports:
-          - containerPort: 80
+        - containerPort: 8080
+          protocol: TCP
       imagePullSecrets:
       - name: regcred
-status: {}
-
 ---
 
 apiVersion: v1

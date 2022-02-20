@@ -17,11 +17,15 @@ spec:
         image: swithan/ctf_challenges:data_best
         imagePullPolicy: Always
         resources:
+          requests:
+            memory: "8Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "16Mi"
+            cpu: "0.03"
         ports:
         - containerPort: 8888
+          protocol: TCP
       imagePullSecrets:
       - name: regcred
 ---
@@ -35,6 +39,7 @@ spec:
   ports:
   - port: 8888
     protocol: TCP
+    targetPort: 8888
   selector:
     app: data-best
-  type: LoadBalancer
+  type: NodePort

@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: family-member
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: postgres
+      run: family-member
   template:
     metadata:
       labels:
-        app: postgres
+        run: family-member
     spec:
       containers:
-      - name: challenge-db
+      - name: family-member
         image: swithan/ctf_challenges:db_murphy
         ports:
           - containerPort: 5432
+            protocol: TCP
         env:
         - name: POSTGRES_PASSWORD
           valueFrom: 
@@ -24,9 +25,12 @@ spec:
               name: pg-secret
               key: POSTGRES_PASSWORD
         resources:
+          requests:
+            memory: "32Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "0.03"
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always
@@ -34,13 +38,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: family-member
   labels: 
-    app: postgres
+    run: family-member
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: postgres
+    run: family-member
   ports:
   - port: 5432
   

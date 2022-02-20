@@ -15,17 +15,20 @@ spec:
       containers:
       - name: cable-broken
         image: swithan/ctf_challenges:cable_broken
+        imagePullPolicy: Always
         resources:
+          requests:
+            memory: "8Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "16Mi"
+            cpu: "0.03"
         ports:
         - containerPort: 8800
+          protocol: TCP
       imagePullSecrets:
       - name: regcred
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -36,6 +39,7 @@ spec:
   ports:
   - port: 8800
     protocol: TCP
+    targetPort: 8800
   selector:
     app: cable-broken
-  type: LoadBalancer
+  type: NodePort
