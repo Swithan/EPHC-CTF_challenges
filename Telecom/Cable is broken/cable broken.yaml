@@ -16,9 +16,12 @@ spec:
       - name: cable-broken
         image: swithan/ctf_challenges:cable_broken
         resources:
+          requests:
+            memory: "16Mi"
+            cpu: "0.01"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "32Mi"
+            cpu: "0.05"
         ports:
         - containerPort: 8800
       imagePullSecrets:
