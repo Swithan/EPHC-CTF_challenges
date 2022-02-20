@@ -44,7 +44,7 @@ class SettingsView extends StatelessWidget {
           const Align(
             alignment: Alignment.bottomCenter,
             child: Text(
-              "Maybe you'll see beter in the dark",
+              "Maybe you'll see beter in the dark.",
               style: TextStyle(color: Colors.white),
             ),
           )

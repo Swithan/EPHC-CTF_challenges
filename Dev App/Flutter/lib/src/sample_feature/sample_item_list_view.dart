@@ -10,15 +10,14 @@ class SampleItemListView extends StatelessWidget {
   const SampleItemListView({
     Key? key,
     this.items = const [
-      SampleItem(0, 2),
-      SampleItem(0, 2),
-      SampleItem(1, 4),
+      SampleItem(0, 0),
+      SampleItem(1, 0),
       SampleItem(2, 0),
       SampleItem(3, 0),
       SampleItem(4, 0),
       SampleItem(5, 0),
       SampleItem(6, 0),
-      SampleItem(7, 0),
+      SampleItem(7, 3),
       SampleItem(8, 0),
       SampleItem(9, 0),
       SampleItem(10, 0),
@@ -45,7 +44,7 @@ class SampleItemListView extends StatelessWidget {
       SampleItem(31, 0),
       SampleItem(32, 0),
       SampleItem(33, 0),
-      SampleItem(34, 0),
+      SampleItem(34, 1),
       SampleItem(35, 0),
       SampleItem(36, 0),
       SampleItem(37, 0),
@@ -136,9 +135,9 @@ class SampleItemListView extends StatelessWidget {
       SampleItem(122, 0),
       SampleItem(123, 0),
       SampleItem(124, 0),
-      SampleItem(125, 0),
+      SampleItem(125, 4),
       SampleItem(126, 0),
-      SampleItem(127, 1),
+      SampleItem(127, 0),
       SampleItem(128, 0),
       SampleItem(129, 0),
       SampleItem(130, 0),
@@ -146,7 +145,7 @@ class SampleItemListView extends StatelessWidget {
       SampleItem(132, 0),
       SampleItem(133, 0),
       SampleItem(134, 0),
-      SampleItem(135, 0),
+      SampleItem(135, 2),
       SampleItem(136, 0),
       SampleItem(137, 0),
       SampleItem(138, 0),
@@ -312,7 +311,7 @@ class SampleItemListView extends StatelessWidget {
               final item = items[index];
 
               return ListTile(
-                  title: Text('SampleItem ${item.id}'),
+                  title: Text('Item ${item.id}'),
                   leading: const CircleAvatar(
                     foregroundImage:
                         AssetImage('assets/images/flutter_logo.png'),
@@ -325,7 +324,7 @@ class SampleItemListView extends StatelessWidget {
                   });
             } else {
               return ListTile(
-                  title: Text('SampleIpem ${items[index].id}'),
+                  title: Text('${items[index].id}'),
                   leading: const CircleAvatar(
                     foregroundImage:
                         AssetImage('assets/images/flutter_logo.png'),
