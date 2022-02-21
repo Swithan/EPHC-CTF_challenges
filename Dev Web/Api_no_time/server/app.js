@@ -37,7 +37,7 @@ app.post('/login', async(req, res) => {
                 correct = false;
                 return res.status(200).send({ "message": "wrong pin" });
             } else {
-                await new Promise(resolve => setTimeout(resolve, 50));
+                await new Promise(resolve => setTimeout(resolve, 100));
                 i += 1;
             }
 
