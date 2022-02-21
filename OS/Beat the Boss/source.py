@@ -44,5 +44,12 @@ quit -- Leave challenge
         break
     else:
         if '' != data:
-            print('{} : Permission denied'.format(data))
-            sys.stdout.flush()
+            if 'su ' in data:
+                print('su : User not found')
+            elif 'ls ' in data:
+                print('ls : You are not authorized to do that here')
+            elif 'cat ' in data:
+                print('cat : File not found')
+            else:
+                print('{} : Command not found'.format(data))
+    sys.stdout.flush()

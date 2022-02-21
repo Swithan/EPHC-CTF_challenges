@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: beat-the-boss
-        image: swithan/ctf_challenges:os_privileges
+        image: swithan/ctf_challenges:beat_the_boss
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "16Mi"
