@@ -1,5 +1,5 @@
 <h1>Connect these entries with the correct output</h1>
-<img src="/assets/cable.png">
+<img src="assets/cable.png">
 <form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
     <label for="A">A </label><input list="connections" id="A" formControlName="A">
     <label for="B"> B </label><input list="connections" id="B" formControlName="B"><br>
@@ -22,5 +22,6 @@
         <option value="8">
     </datalist>
 </form>
+<p id="error"></p>
 
 <router-outlet></router-outlet>

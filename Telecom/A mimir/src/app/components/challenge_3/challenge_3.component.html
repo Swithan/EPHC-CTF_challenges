@@ -1,7 +1,8 @@
+<h1>What is the theoretical maximum speed of a phone line [300 to 3400 Hz] admitting signal/noise equals 30 dB ? </h1>
 <form id="formChallenge3" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-    <label for="result">What is the theoretical maximum speed of a phone line [300 to 3400 Hz] 
-        admitting signal/noise equals 30 dB ? </label><input type="result" id="result" formControlName="result"> bit/s
+    <label for="result">D = </label><input type="result" id="result" formControlName="result"> bit/s
     <input type="submit" value="Confirm">
 </form>
+<p id="error"></p>
 
 <router-outlet></router-outlet>

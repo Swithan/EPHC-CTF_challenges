@@ -34,7 +34,6 @@ export class Challenge4Component implements OnInit {
 
   onSubmit(res: any) {
     let error = document.getElementById('error');
-    console.log(res)
     if (btoa(res.A) == "Mw==" && btoa(res.B) == "Ng==" && btoa(res.C) == "MQ==" && btoa(res.D) == 'Nw=='
       && btoa(res.E) == "OA==" && btoa(res.F) == "Mg==" && btoa(res.G) == "NA==" && btoa(res.H) == "NQ==") {
       if (error != null) {
