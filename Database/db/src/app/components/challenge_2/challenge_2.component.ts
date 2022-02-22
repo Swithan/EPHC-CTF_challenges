@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Challenge2Component implements OnInit {
 
   public form;
-  x = 'U0VMRUNUIExJQkVMTEUsIFBSSVggRlJPTSBQUk9EVUlUIFdIRVJFIE5QUk8gSU4gKFNFTEVDVCBOUFJPIEZST00gREVUQUlMIFdIRVJFIE5DT00gSU4gKFNFTEVDVCBOQ09NIEZST00gQ09NTUFOREUgV0hFUkUgTkNMSSA9IChTRUxFQ1QgTkNMSSBGUk9NIENMSUVOVCBXSEVSRSBOT00gPSAnRkVSQVJEJykpKQ==';
+  x = 'T1BUSU9OIDI=';
 
   constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
@@ -27,7 +27,7 @@ export class Challenge2Component implements OnInit {
 
   onSubmit(res: any) {
     let error = document.getElementById('error');
-    let hide = window.btoa(res.result);
+    let hide = window.btoa(res.result.toUpperCase());
     if (hide == this.x) {
       if (error != null) {
         error.innerHTML = ''

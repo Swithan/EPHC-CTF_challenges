@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Challenge4Component implements OnInit {
 
   public form;
-  com = 'SU5TRVJUIElOVE8gQ09NTUFOREUgVkFMVUVTICgnMzAxODknLCAnRjQwMCcsICcyMDIyLTAyJyk=';
-  det = 'SU5TRVJUIElOVE8gREVUQUlMIFZBTFVFUyAoJzMwMTg5JywgJ1BTMjIyJywgNDAp';
+  com = ['SU5TRVJUIElOVE8gQ09NTUFOREUgVkFMVUVTICgnMzAxODknLCAnRjQwMCcsICcyMDIyLTAyJyk=','SU5TRVJUIElOVE8gQ09NTUFOREUgVkFMVUVTICgnMzAxODknLCAnRjQwMCcsICcyMDIyLTAyJyk7'];
+  det = ['SU5TRVJUIElOVE8gREVUQUlMIFZBTFVFUyAoJzMwMTg5JywgJ1BTMjIyJywgNDAp','SU5TRVJUIElOVE8gREVUQUlMIFZBTFVFUyAoJzMwMTg5JywgJ1BTMjIyJywgNDApOw=='];
 
   constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
@@ -29,8 +29,7 @@ export class Challenge4Component implements OnInit {
 
   onSubmit(res: any) {
     let error = document.getElementById('error');
-    console.log(res)
-    if (this.com == btoa(res.commande.toUpperCase()) && this.det == btoa(res.detail.toUpperCase())) {
+    if (this.com.indexOf(btoa(res.commande.toUpperCase()))> -1 && this.det.indexOf(btoa(res.detail.toUpperCase())) > -1) {
       if (error != null) {
         error.innerHTML = ''
       }

@@ -1,10 +1,28 @@
 <h1>Give the SELECT command to retrieve the products LIBELLE and PRIX ordered by FERARD</h1>
-<p>You may only use SELECT and WHERE.</p>
-<p>You have to retrieve unique values</p>
 <img src="assets/client.png">
+<p><b>Option 1 :</b></p>
+<p>
+    SELECT LIBELLE, PRIX FROM PRODUIT WHERE NPRO IN <br> (SELECT NPRO FROM DETAIL WHERE NCOM IN <br> (SELECT NCOM FROM CLIENT WHERE NCLI = <br> (SELECT NCLI FROM COMMANDE WHERE NOM = 'FERARD')))
+</p>
+<p><b>Option 2 :</b></p>
+<p>
+    SELECT LIBELLE, PRIX FROM PRODUIT WHERE NPRO IN <br> (SELECT NPRO FROM DETAIL WHERE NCOM IN <br> (SELECT NCOM FROM COMMANDE WHERE NCLI = <br> (SELECT NCLI FROM CLIENT WHERE NOM = 'FERARD')))
+</p>
+<p><b>Option 3 :</b></p>
+<p>
+    SELECT LIBELLE, PRIX FROM PRODUIT WHERE NPRO = <br> (SELECT NPRO FROM DETAIL WHERE NCOM = <br> (SELECT NCOM FROM COMMANDE WHERE NCLI = <br> (SELECT NCLI FROM CLIENT WHERE NOM = 'FERARD')))
+</p>
+<p><b>Option 4 :</b></p>
+<p>
+    SELECT LIBELLE, PRIX FROM PRODUIT WHERE NCOM IN <br> (SELECT NCOM FROM DETAIL WHERE NPRO IN <br> (SELECT NPRO FROM COMMANDE WHERE NCLI = <br> (SELECT NCLI FROM CLIENT WHERE NOM = 'FERARD')))
+</p>
+<p><b>Option 5 :</b></p>
+<p>
+    SELECT LIBELLE, PRIX FROM PRODUIT WHERE NCOM = <br> (SELECT NPRO FROM COMMANDE WHERE NCLI = <br> (SELECT NCOM FROM DETAIL WHERE NPRO = <br> (SELECT NCLI FROM CLIENT WHERE NOM = 'FERARD')))
+</p>
 <form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
     <label for="result">Command : </label>
-    <input type="result" id="result" formControlName="result">
+    <input list="options" type="result" id="result" formControlName="result" placeholder="Option X">
     <input type="submit" value="Confirm">
 </form>
 <p id="error"></p>

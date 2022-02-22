@@ -1,13 +1,10 @@
 img {
     height: 50%;
-    width: 100%;
+    width: 50%;
     max-width: 800px;
+    float: left;
 }
 
 #error {
     color: red;
-}
-
-#result {
-    width: 75%;
 }
