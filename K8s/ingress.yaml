@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elec-telecom-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /cable-broken/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: cable-broken
+            port:
+              number: 8800
+      - path: /a-mimir/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: a-mimir
+            port:
+              number: 8000
+      - path: /pikachu/*
+        pathType: ImplementationSpecific
+        backend: 
+          service:
+            name: pikachu
+            port: 
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /mr-puel/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: mr-puel
+            port:
+              number: 8008
+      - path: /data-best/*
+        pathType: ImplementationSpecific
+        backend: 
+          service:
+            name: data-best
+            port: 
+              number: 8888

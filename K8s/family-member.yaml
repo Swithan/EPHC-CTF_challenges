@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: family-member
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: family-member
@@ -14,26 +14,20 @@ spec:
     spec:
       containers:
       - name: family-member
-        image: swithan/ctf_challenges:db_murphy
+        image: swithan/ctf_challenges:family_member
+        imagePullPolicy: Always
         ports:
           - containerPort: 5432
             protocol: TCP
-        env:
-        - name: POSTGRES_PASSWORD
-          valueFrom: 
-            secretKeyRef:
-              name: pg-secret
-              key: POSTGRES_PASSWORD
         resources:
           requests:
-            memory: "32Mi"
-            cpu: "0.01"
+            memory: "256Mi"
+            cpu: "0.45"
           limits:
-            memory: "64Mi"
-            cpu: "0.03"
+            memory: "512Mi"
+            cpu: "0.7"
       imagePullSecrets:
         - name: regcred
-      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
