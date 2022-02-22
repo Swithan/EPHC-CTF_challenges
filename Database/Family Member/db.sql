@@ -5,10 +5,6 @@ CREATE TABLE IF NOT EXISTS members
     m_data character varying
 );
 
-ALTER TABLE members
-    OWNER to postgres;
-
-
 INSERT INTO members(
     firstname, lastname, m_data)
     VALUES 
@@ -37,7 +33,7 @@ INSERT INTO members(
 ('David','Morris','HSKF{HzNSL'),
 ('Raymond','Russell','HSKF{SrLne'),
 ('Margaret','Green','HSKF{cyorl'),
-('Billy','Murphy','HSKF{oDyhf'),
+('Billy','Murphy','HSKF{Dyh_F'),
 ('Frances','Parker','HSKF{SvuYv'),
 ('Nicole','Brown','pTwqE}'),
 ('Rose','James','RSxAP}'),
@@ -54,7 +50,7 @@ INSERT INTO members(
 ('Wayne','Morgan','CUgbf}'),
 ('Randy','Robinson','fcYtH}'),
 ('Louis','Mitchell','swyIY}'),
-('Todd','Murphy','hvduo}'),
+('Todd','Murphy','dhvdu}'),
 ('Beverly','Patterson','xoaZf}'),
 ('Shirley','Edwards','ikhFV}'),
 ('Katherine','Stewart','NvRZO}'),
@@ -63,4 +59,12 @@ INSERT INTO members(
 ('Anne','Evans','FdCOK}'),
 ('Craig','Bell','BXcgJ}');
 
- 
+CREATE ROLE "user" WITH LOGIN ENCRYPTED PASSWORD 'RandomPassword1';
+GRANT CONNECT ON DATABASE "postgres" TO "user";
+GRANT USAGE ON SCHEMA "public" TO "user";
+GRANT SELECT ON "members" TO "user";
+
+REVOKE ALL PRIVILEGES ON TABLE "members" FROM "postgres";
+GRANT CONNECT ON DATABASE "postgres" TO "postgres";
+GRANT USAGE ON SCHEMA "public" TO "postgres";
+GRANT SELECT ON "members" TO "postgres";
