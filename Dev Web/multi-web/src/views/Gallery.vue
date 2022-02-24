@@ -29,7 +29,7 @@ export default {
 
     methods: {
         give(){
-            alert('get this : EPHC{hide_and_seek}')
+            alert('get this : '+atob('RVBIQ3toaWRlX2FuZF9zZWVrfQ=='))
         },
     },
 }

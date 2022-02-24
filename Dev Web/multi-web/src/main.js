@@ -15,14 +15,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
+    // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
-Vue.$cookies.set('flag','EPHC{The_cookie_is_a_lie}');
+Vue.$cookies.set('flag', atob('RVBIQ3tUaGVfY29va2llX2lzX2FfbGllfQ=='));
 
 new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount('#app')
