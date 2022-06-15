@@ -7,13 +7,3 @@ data:
   POSTGRES_DB: cG9zdGdyZXM=
   POSTGRES_USER: cG9zdGdyZXM=
   POSTGRES_PASSWORD: UGFzc3cwcmQh
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: test
-type: Opaque
-data:
-  POSTGRES_DB: cG9zdGdyZXM=
-  POSTGRES_USER: dXNlcg==
-  POSTGRES_PASSWORD: UmFuZG9tUGFzc3dvcmQx
