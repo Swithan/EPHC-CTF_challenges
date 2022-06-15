@@ -31,7 +31,8 @@
         methods: {
             testPin(){
                 this.error = "";
-                axios.post("http://34.135.114.177:3080/login", {
+                // TODO : change post address to server address
+                axios.post("http://localhost:3080/login", {
                     pin : this.pin
                 })
                     .then(result =>{

@@ -1,7 +1,8 @@
 <h1>Huffman : Give the binary values of 'keep it simple stupid'</h1>
+<p>Keep this order as Huffman-tree base</p>
 <img src="assets/Huffman.png">
 <form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-    <label for="result">Taux de compression = </label><input type="result" id="result" formControlName="result">%
+    <label for="result">Taux de compression = (round to x.xx) </label><input type="result" id="result" formControlName="result">%
     <input type="submit" value="Confirm">
 </form>
 <p id="error"></p>
